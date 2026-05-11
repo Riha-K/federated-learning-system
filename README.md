@@ -181,18 +181,9 @@ Server-side evaluation runs on **CPU** to avoid contending with clients for VRAM
 - Each (method, dataset, K, partition) hashes to a stable run-id; results are written deterministically.
 - Re-running the sweep on identical hardware reproduces the numbers in `results/metrics.csv` to within standard nondeterministic GPU variance.
 
----
 
-## Reference
+##Youtube Video
 
-Adapted from:
+Link -> https://youtu.be/73MNc-qABog
 
-> **FLwF-2** — *Federated Continual Learning through distillation in pervasive computing.* (Original method targets HAR; this repository adapts the framework to standard image classification benchmarks for ablation and reproducibility.)
 
-See `main.tex` for the accompanying paper (sources, tables, and figures all in this repo).
-
----
-
-## Further reading
-
-For the long-form walkthrough (folder map, troubleshooting, supervisor script, partial sweeps), see [`PROJECT.md`](PROJECT.md).
