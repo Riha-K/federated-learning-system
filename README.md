@@ -1,4 +1,8 @@
-# Federated Continual Learning: FedAvg vs FLwF-2
+# Federated Continual Learning with Knowledge Distillation: Preserving Stability While Enabling Adaptation
+
+##Youtube Video
+
+Link -> https://youtu.be/73MNc-qABog
 
 A reproducible study of **catastrophic forgetting** in federated learning and how **dual-teacher knowledge distillation** (FLwF-2) mitigates it.
 
@@ -158,23 +162,6 @@ Override any of these via the YAML config — no code changes needed.
 
 ---
 
-## GPU notes
-
-In `configs/sweep.yaml` under `resources.client`:
-
-- `num_gpus: 1.0` — one Ray virtual client per GPU (most stable, sequential per device)
-- `num_gpus: 0.5` — two clients share a GPU (more parallel; risk of OOM on smaller cards)
-
-Always pin which physical GPUs Ray is allowed to use:
-
-```bash
-CUDA_VISIBLE_DEVICES=0,1,3,4 .venv/bin/python -u -m src.experiments --sweep configs/sweep.yaml
-```
-
-Server-side evaluation runs on **CPU** to avoid contending with clients for VRAM.
-
----
-
 ## Reproducibility
 
 - All randomness seeded with `42` (Python `random`, NumPy, PyTorch).
@@ -182,8 +169,5 @@ Server-side evaluation runs on **CPU** to avoid contending with clients for VRAM
 - Re-running the sweep on identical hardware reproduces the numbers in `results/metrics.csv` to within standard nondeterministic GPU variance.
 
 
-##Youtube Video
-
-Link -> https://youtu.be/73MNc-qABog
 
 
